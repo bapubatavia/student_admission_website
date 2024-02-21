@@ -2,7 +2,6 @@ package com.batavia;
 
 import java.io.IOException;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
