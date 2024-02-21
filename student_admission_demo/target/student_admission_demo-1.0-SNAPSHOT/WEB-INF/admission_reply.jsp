@@ -41,23 +41,15 @@
 		</p>
 		<p>Last Name: <%= request.getAttribute("lname") %>
 		</p>
-		<p>Email: <%= request.getAttribute("email") %>
-		</p>
-		<p>Date of Birth: <%= request.getAttribute("dob") %>
-		</p>
+		<p>Student ID: <%= request.getAttribute("stuId") %>
+		</p>		
 		<p>Faculty: <%= request.getAttribute("fac") %>
 		</p>
 		<p>Department: <%= request.getAttribute("dep") %>
 		</p>
-		<p>Course 1: <%= request.getAttribute("courseOne") %>
-		</p>
-		<p>Course 2: <%= request.getAttribute("courseTwo") %>
+		<p>Semester: <%= request.getAttribute("sem") %>
 		</p>				
 		<p>Address One: <%= request.getAttribute("address_one") %>
-		</p>
-		<p>Semester: <%= request.getAttribute("sem") %>
-		</p>
-		<p>Student ID: <%= request.getAttribute("stuId") %>
 		</p>
 		<p>Uploaded Picture file: <%= request.getAttribute("imageName") %>
 		</p>		

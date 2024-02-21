@@ -21,8 +21,13 @@ public class loginServlet extends HttpServlet {
     
         if(email.equals(emailDemo) && password.equals(passwordDemo)){
             request.setAttribute("message", messageGood);
-            HttpSession session = request.getSession(true);            
-            session.setAttribute("username", email);
+            HttpSession session = request.getSession(true);     
+            session.setAttribute("email", email);
+            try {
+                signUpEmail.sendMail(email, "login");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else{
             request.setAttribute("message", messageBad);
         }

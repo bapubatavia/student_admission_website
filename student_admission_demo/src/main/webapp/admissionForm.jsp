@@ -33,7 +33,7 @@
 	<!-- First part -->
 	<div class="container py-2 my-5 mx-auto">
 		<form class="w-50 mx-auto my-3 row g-3 needs-validation" action="./admission" method="post" id="enrolment" enctype="multipart/form-data" novalidate>
-		  	<p class="text-center fs-4 pb-4">Student Registration Form</p>
+		  	<p class="text-center fs-4 pb-4">Student Admission Form</p>
 			<div class="col-md-6">
 			    <label for="inputFirstName" class="form-label">First Name</label>
 			    <input type="text" class="form-control" id="inputFirstName" name="fName" required>

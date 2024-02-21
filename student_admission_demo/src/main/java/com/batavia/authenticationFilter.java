@@ -22,7 +22,7 @@ public class authenticationFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         HttpSession session = httpRequest.getSession(false);
-        boolean loggedIn = session != null && session.getAttribute("username") != null;
+        boolean loggedIn = session != null && session.getAttribute("email") != null;
 
         if(loggedIn){
             chain.doFilter(httpRequest, httpResponse);
