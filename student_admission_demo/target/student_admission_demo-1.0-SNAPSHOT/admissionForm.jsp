@@ -80,7 +80,7 @@
 			<div class="col-md-5 mb-3 form-check">
 			    <input type="checkbox" class="form-check-input" id="termValidationCheck" required>
 			    <label class="form-check-label" for="termValidationCheck">I agree to terms and conditions</label>
-
+				<input type="hidden" name="formType" value="admission">
 		  </div>
 		  <button type="submit" name="submit" class="btn btn-primary">Register</button>
 		</form>

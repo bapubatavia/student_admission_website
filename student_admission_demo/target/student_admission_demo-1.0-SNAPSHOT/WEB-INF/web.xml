@@ -52,6 +52,9 @@
     <!-- <url-pattern>/api</url-pattern> -->
   </filter-mapping>  
 
+  <listener>
+      <listener-class>com.batavia.formSubmitListener</listener-class>
+  </listener>
 
   <welcome-file-list>
     <welcome-file>signUp.jsp</welcome-file>

@@ -23,11 +23,11 @@ public class loginServlet extends HttpServlet {
             request.setAttribute("message", messageGood);
             HttpSession session = request.getSession(true);     
             session.setAttribute("email", email);
-            try {
-                signUpEmail.sendMail(email, "login");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            // try {
+            //     signUpEmail.sendMail(email, "login");
+            // } catch (Exception e) {
+            //     e.printStackTrace();
+            // }
         } else{
             request.setAttribute("message", messageBad);
         }

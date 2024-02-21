@@ -7,7 +7,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+// import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
@@ -37,12 +37,12 @@ public class admissionServlet extends HttpServlet{
         } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
-        HttpSession session = request.getSession(false); 
-        try {
-            signUpEmail.sendMail((String)session.getAttribute("email"), "admissionForm");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // HttpSession session = request.getSession(false); 
+        // try {
+        //     signUpEmail.sendMail((String)session.getAttribute("email"), "admissionForm");
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
 
         try {
             request.getRequestDispatcher("/WEB-INF/admission_reply.jsp").forward(request, response);

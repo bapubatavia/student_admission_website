@@ -2,6 +2,7 @@ com\batavia\admissionServlet.class
 com\batavia\fileUploadFilter.class
 com\batavia\loginServlet.class
 com\batavia\authenticationFilter.class
+com\batavia\formSubmitListener.class
 com\batavia\signUpEmail$1.class
 com\batavia\signUpEmail.class
 com\batavia\signUpServlet.class
