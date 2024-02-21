@@ -1,0 +1,59 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>admissionServlet</servlet-name>
+    <servlet-class>com.batavia.admissionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>admissionServlet</servlet-name>
+    <url-pattern>/admission</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>com.batavia.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>signUpServlet</servlet-name>
+    <servlet-class>com.batavia.signUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>signUpServlet</servlet-name>
+    <url-pattern>/signUp</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>AuthenticationFilter</filter-name>
+    <filter-class>com.batavia.authenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationFilter</filter-name>
+    <url-pattern>/admissionForm.jsp</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>fileUploadFilter</filter-name>
+    <filter-class>com.batavia.fileUploadFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>fileUploadFilter</filter-name>
+    <servlet-name>admissionServlet</servlet-name>
+    <!-- <url-pattern>/api</url-pattern> -->
+  </filter-mapping>  
+
+
+  <welcome-file-list>
+    <welcome-file>signUp.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
