@@ -33,6 +33,53 @@
     <url-pattern>/signUp</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>displayFormsServlet</servlet-name>
+    <servlet-class>com.batavia.displayFormsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>displayFormsServlet</servlet-name>
+    <url-pattern>/enrollmentData</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+      <servlet-name>formDetailsServlet</servlet-name>
+      <servlet-class>com.batavia.formDetailsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>formDetailsServlet</servlet-name>
+      <url-pattern>/formDetails</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <servlet-name>UpdateStatusServlet</servlet-name>
+      <servlet-class>com.batavia.UpdateStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>UpdateStatusServlet</servlet-name>
+      <url-pattern>/updateStatus</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <servlet-name>LogoutServlet</servlet-name>
+      <servlet-class>com.batavia.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>LogoutServlet</servlet-name>
+      <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+      <servlet-name>DownloadCertificateServlet</servlet-name>
+      <servlet-class>com.batavia.DownloadCertificateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>DownloadCertificateServlet</servlet-name>
+      <url-pattern>/downloadCertificate</url-pattern>
+  </servlet-mapping>
+
   <filter>
     <filter-name>AuthenticationFilter</filter-name>
     <filter-class>com.batavia.authenticationFilter</filter-class>

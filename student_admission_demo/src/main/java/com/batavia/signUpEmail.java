@@ -42,11 +42,11 @@ public class signUpEmail {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(myEmail));
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-                if(formName == "admissionForm"){
+                if(formName == "admissionServlet"){
                     message.setSubject("IpsumTab - Registration successful!");
                     message.setText("Your enrolment has been successfully completed. \n Thank you for choosing IpsumTab Academy! \n Best regards, \n Your IpsumTab team");
                     return message;
-                } else{
+                } else if(formName == "loginServlet"){
                     message.setSubject("IpsumTab - Login notification!");
                     message.setText("Your account has been logged into.\n Best regards, \n Your IpsumTab team");
                     return message;                    

@@ -1,6 +1,10 @@
 package com.batavia;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.IOException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -10,57 +14,70 @@ import javax.servlet.http.HttpServletResponse;
 // import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import model.EnrollmentForm;
+import service.EnrollmentFormService;
+import service.EnrollmentFormServiceImpl;
+
 
 @MultipartConfig
-public class admissionServlet extends HttpServlet{
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException{
+public class admissionServlet extends HttpServlet {
+    private final EnrollmentFormService formService = new EnrollmentFormServiceImpl();
 
-        String first_name = request.getParameter("fName");
-        request.setAttribute("fname", first_name);
-        String last_name = request.getParameter("lName");
-        request.setAttribute("lname", last_name);
-        String studentId = request.getParameter("studentId");
-        request.setAttribute("stuId", studentId);        
-        String faculty = request.getParameter("fac");        
-        request.setAttribute("fac", faculty);
-        String department = request.getParameter("dep");
-        request.setAttribute("dep", department);
-        String semester = request.getParameter("semester");
-        request.setAttribute("sem", semester);               
-        String address_one = request.getParameter("address_one");
-        request.setAttribute("address_one", address_one);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EnrollmentForm form = new EnrollmentForm();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            String firstName = request.getParameter("fName");
+            form.setFirstName(firstName);
+            String lastName = request.getParameter("lName");
+            form.setLastName(lastName);
+            String gender = request.getParameter("gender");
+            form.setGender(gender);
+            Date dateOfBirth = dateFormat.parse(request.getParameter("dateOfBirth"));
+            form.setDob(dateOfBirth);
+            String phoneNumber = request.getParameter("phoneNumber");
+            form.setPhoneNumber(phoneNumber);
+            String faculty = request.getParameter("fac");
+            form.setFaculty(faculty);
+            String department = request.getParameter("dep");
+            form.setDepartment(department);
+            String semester = request.getParameter("semester");
+            form.setSemester(semester);               
+            String address = request.getParameter("address");
+            form.setAddress(address);
+            form.setStatus("Pending");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }  
         try {
             Part fileCertPart = request.getPart("filePdf");
-            request.setAttribute("certificateName", fileCertPart.getSubmittedFileName());
+            byte[] fileCertBytes = convertPartToByteArray(fileCertPart);
+            form.setCertificatePdf(fileCertBytes);
             Part filePicPart = request.getPart("filePicture");
-            request.setAttribute("imageName", filePicPart.getSubmittedFileName());
+            byte[] filePicBytes = convertPartToByteArray(filePicPart);
+            form.setPassportPicture(filePicBytes);
+            form.setPassportPictureType(filePicPart.getContentType());
+            System.out.println(filePicPart.getContentType());
         } catch (IOException | ServletException e) {
             e.printStackTrace();
         }
-        // HttpSession session = request.getSession(false); 
-        // try {
-        //     signUpEmail.sendMail((String)session.getAttribute("email"), "admissionForm");
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
+        
+        formService.registerForm(form);
 
-        try {
-            request.getRequestDispatcher("/WEB-INF/admission_reply.jsp").forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        };
+        request.setAttribute("javax.servlet.include.servlet_path", "admissionServlet");
 
+        request.getRequestDispatcher("/WEB-INF/admission_reply.jsp").forward(request, response);
     }
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+    private byte[] convertPartToByteArray(Part part) throws IOException {
+        try (InputStream inputStream = part.getInputStream();
+             ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            return outputStream.toByteArray();
+        }
     }
-    
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-    }    
 }
